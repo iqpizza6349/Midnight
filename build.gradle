@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        queryDslVersion = '5.0.0'
+
+        http_implements = ['org.springframework.boot:spring-boot-starter-validation', 'org.springframework.boot:spring-boot-starter-web']
+        http_annotations = ['org.springframework.boot:spring-boot-configuration-processor']
+        http_test = ['org.springframework.boot:spring-boot-starter-test']
+
+        api_implements = ['org.hibernate.validator:hibernate-validator:8.0.0.Final']
+        api_test = ['org.assertj:assertj-core:3.24.2', 'org.hamcrest:hamcrest-library:2.2', 'org.mockito:mockito-core:3.11.2', 'org.mockito:mockito-junit-jupiter:3.11.2']
+
+        domain_implements = ['org.springframework.boot:spring-boot-starter-data-jpa']
+        domain_database = ['com.mysql:mysql-connector-j']
+
+        core_implements = ['org.springframework.boot:spring-boot-starter-websocket', 'org.springframework.kafka:spring-kafka']
+        core_test = ['org.springframework.kafka:spring-kafka-test']
+
+        validation_test = ['org.glassfish:jakarta.el:5.0.0-M1']
+    }
+}
+
+allprojects {
+    group 'me.iqpizza6349'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'java-library'
+
+    sourceCompatibility = '17'
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+}
