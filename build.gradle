@@ -4,8 +4,6 @@ buildscript {
     }
 
     ext {
-        queryDslVersion = '5.0.0'
-
         http_implements = ['org.springframework.boot:spring-boot-starter-validation', 'org.springframework.boot:spring-boot-starter-web']
         http_annotations = ['org.springframework.boot:spring-boot-configuration-processor']
         http_test = ['org.springframework.boot:spring-boot-starter-test']

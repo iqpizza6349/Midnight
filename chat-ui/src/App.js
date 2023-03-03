@@ -27,7 +27,7 @@ const App = () => {
     chatAPI.sendMessage(user.username, msgText).then(res => {
       console.log('Sent', res);
     }).catch(err => {
-      console.log('Error Occured while sending message to api');
+      console.log('Error Occurred while sending message to api', err);
     })
   }
 
@@ -37,8 +37,12 @@ const App = () => {
     setUser({
       username: username,
       color: randomColor()
+    });
+    chatAPI.joinUser(username).then(res => {
+      console.log('join', res);
+    }).catch(err => {
+      console.log('Error Occurred while joining channel to api', err);
     })
-
   }
 
   return (

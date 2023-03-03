@@ -16,6 +16,14 @@ const chatAPI = {
             content: text
         }
         return api.post(`send`, msg);
+    },
+
+    joinUser: (username) => {
+        let user = {
+            sender: username,
+            content: ''
+        }
+        return api.post(`join`, user);
     }
 }
 

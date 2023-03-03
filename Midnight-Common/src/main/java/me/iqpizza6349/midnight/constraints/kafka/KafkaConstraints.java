@@ -1,4 +1,4 @@
-package me.iqpizza6349.midnight.constraints;
+package me.iqpizza6349.midnight.constraints.kafka;
 
 public class KafkaConstraints {
     public static final String KAFKA_TOPIC = "kafka-chat-2";

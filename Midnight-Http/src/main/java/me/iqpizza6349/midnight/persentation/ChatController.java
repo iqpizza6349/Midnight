@@ -3,9 +3,11 @@ package me.iqpizza6349.midnight.persentation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.iqpizza6349.midnight.constraints.KafkaConstraints;
-import me.iqpizza6349.midnight.model.Message;
-import org.springframework.kafka.core.KafkaTemplate;
+import me.iqpizza6349.midnight.core.utils.KafkaMessageSender;
+import me.iqpizza6349.midnight.event.member.MemberEvent;
+import me.iqpizza6349.midnight.listener.join.JoinEventListener;
+import me.iqpizza6349.midnight.model.client.Member;
+import me.iqpizza6349.midnight.model.message.Message;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -15,25 +17,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.ExecutionException;
-
 @Slf4j
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 public class ChatController {
 
-    private final KafkaTemplate<String, Message> kafkaTemplate;
+    private final KafkaMessageSender sender;
+    private final JoinEventListener joinEventListener;
 
     @PostMapping(value = "/api/send", consumes = "application/json", produces = "application/json")
     public void sendMessage(@RequestBody @Valid Message message) {
-        try {
-            // sending the message to kafka topic queue
-            kafkaTemplate.send(KafkaConstraints.KAFKA_TOPIC, message).get();
-        } catch (InterruptedException | ExecutionException e) {
-            log.warn("{}", e.getMessage());
-            throw new RuntimeException(e);
-        }
+        sender.sendMessage(message);
+    }
+
+    @PostMapping(value = "/api/join", consumes = "application/json", produces = "application/json")
+    public void joinUser(@RequestBody @Valid Message message) {
+        joinEventListener.onMemberJoin(new MemberEvent(new Member(message.getSender())));
     }
 
     // ---- WebSocket API ----

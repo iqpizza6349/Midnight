@@ -1,4 +1,4 @@
-package me.iqpizza6349.midnight.model;
+package me.iqpizza6349.midnight.model.message;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

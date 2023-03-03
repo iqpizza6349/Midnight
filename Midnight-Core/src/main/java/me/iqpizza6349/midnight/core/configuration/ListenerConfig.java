@@ -1,7 +1,7 @@
 package me.iqpizza6349.midnight.core.configuration;
 
-import me.iqpizza6349.midnight.constraints.KafkaConstraints;
-import me.iqpizza6349.midnight.model.Message;
+import me.iqpizza6349.midnight.constraints.kafka.KafkaConstraints;
+import me.iqpizza6349.midnight.model.message.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
