@@ -13,8 +13,13 @@ public class MessageEvent extends MemberEvent {
 
     private final Message message;
 
-    public MessageEvent(int responseCode, Member member, Message message) {
-        super(responseCode, member);
+    public MessageEvent(int responseCode, Message message) {
+        super(responseCode, new Member(message.getSender()));
+        this.message = message;
+    }
+
+    public MessageEvent(Message message) {
+        super(200, new Member(message.getSender()));
         this.message = message;
     }
 }

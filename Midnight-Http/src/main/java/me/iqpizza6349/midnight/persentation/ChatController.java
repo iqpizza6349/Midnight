@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.iqpizza6349.midnight.core.utils.KafkaMessageSender;
 import me.iqpizza6349.midnight.event.member.MemberEvent;
+import me.iqpizza6349.midnight.event.message.MessageEvent;
 import me.iqpizza6349.midnight.listener.join.JoinEventListener;
+import me.iqpizza6349.midnight.listener.message.MessageEventListener;
 import me.iqpizza6349.midnight.model.client.Member;
 import me.iqpizza6349.midnight.model.message.Message;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @Slf4j
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -25,10 +29,12 @@ public class ChatController {
 
     private final KafkaMessageSender sender;
     private final JoinEventListener joinEventListener;
+    private final MessageEventListener messageEventListener;
 
     @PostMapping(value = "/api/send", consumes = "application/json", produces = "application/json")
     public void sendMessage(@RequestBody @Valid Message message) {
         sender.sendMessage(message);
+        messageEventListener.onMessageReceive(new MessageEvent(message));
     }
 
     @PostMapping(value = "/api/join", consumes = "application/json", produces = "application/json")
@@ -49,7 +55,8 @@ public class ChatController {
     public Message addUser(@Payload Message message,
                            SimpMessageHeaderAccessor headerAccessor) {
         // add user in web socket session
-        headerAccessor.getSessionAttributes().put("username", message.getSender());
+        Objects.requireNonNull(headerAccessor.getSessionAttributes())
+                .put("username", message.getSender());
         return message;
     }
 }

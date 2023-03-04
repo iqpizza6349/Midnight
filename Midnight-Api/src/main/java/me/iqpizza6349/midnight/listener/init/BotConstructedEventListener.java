@@ -10,4 +10,13 @@ public interface BotConstructedEventListener extends BotEventListener {
 
     void onShutdown(CloseEvent event);
 
+    @Override
+    default void onEvent(GeneralEvent event) {
+        if (event instanceof CloseEvent closeEvent) {
+            onShutdown(closeEvent);
+        }
+        else {
+            onSetup(event);
+        }
+    }
 }
