@@ -9,7 +9,6 @@
         </processorPath>
         <module name="Midnight.Midnight-Common.main" />
         <module name="Midnight.Midnight-Domain.main" />
-        <module name="Midnight.Midnight-Core.main" />
         <module name="Midnight.main" />
         <module name="Midnight.Midnight-Api.main" />
       </profile>
@@ -20,6 +19,14 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.0.3/fadcb8f1558db61596dec6e523d66305410dbcdc/spring-boot-configuration-processor-3.0.3.jar" />
         </processorPath>
         <module name="Midnight.Midnight-Http.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.0.1/f14786a40bdc99cbed57e924a4c12e43abc95dd/spring-boot-configuration-processor-3.0.1.jar" />
+        </processorPath>
+        <module name="Midnight.Midnight-Core.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

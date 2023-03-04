@@ -18,7 +18,7 @@ dependencies {
     implementation project(':Midnight-Common')
 
     implementation http_implements
-    annotationProcessor http_annotations
+    annotationProcessor config_annotation
 
     implementation core_implements
     testImplementation core_test

@@ -5,7 +5,6 @@ buildscript {
 
     ext {
         http_implements = ['org.springframework.boot:spring-boot-starter-validation', 'org.springframework.boot:spring-boot-starter-web']
-        http_annotations = ['org.springframework.boot:spring-boot-configuration-processor']
         http_test = ['org.springframework.boot:spring-boot-starter-test']
 
         api_implements = ['org.hibernate.validator:hibernate-validator:8.0.0.Final']
@@ -17,6 +16,7 @@ buildscript {
         core_implements = ['org.springframework.boot:spring-boot-starter-websocket', 'org.springframework.kafka:spring-kafka']
         core_test = ['org.springframework.kafka:spring-kafka-test']
 
+        config_annotation = ['org.springframework.boot:spring-boot-configuration-processor']
         validation_test = ['org.glassfish:jakarta.el:5.0.0-M1']
     }
 }
