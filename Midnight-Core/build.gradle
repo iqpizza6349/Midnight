@@ -15,6 +15,7 @@ dependencies {
     implementation project(":Midnight-Common")
     implementation project(":Midnight-Api")
     implementation core_implements
+    implementation webclient_implements
     testImplementation core_test
     annotationProcessor config_annotation
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
