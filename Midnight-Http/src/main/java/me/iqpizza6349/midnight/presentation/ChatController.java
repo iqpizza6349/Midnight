@@ -1,4 +1,4 @@
-package me.iqpizza6349.midnight.persentation;
+package me.iqpizza6349.midnight.presentation;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

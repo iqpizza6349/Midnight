@@ -10,9 +10,6 @@ buildscript {
         api_implements = ['org.hibernate.validator:hibernate-validator:8.0.0.Final']
         api_test = ['org.assertj:assertj-core:3.24.2', 'org.hamcrest:hamcrest-library:2.2', 'org.mockito:mockito-core:3.11.2', 'org.mockito:mockito-junit-jupiter:3.11.2']
 
-        domain_implements = ['org.springframework.boot:spring-boot-starter-data-jpa']
-        domain_database = ['com.mysql:mysql-connector-j']
-
         core_implements = ['org.springframework.boot:spring-boot-starter-websocket', 'org.springframework.kafka:spring-kafka']
         core_test = ['org.springframework.kafka:spring-kafka-test']
 

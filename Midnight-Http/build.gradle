@@ -14,7 +14,6 @@ repositories {
 dependencies {
     implementation project(':Midnight-Api')
     implementation project(':Midnight-Core')
-    implementation project(':Midnight-Domain')
     implementation project(':Midnight-Common')
 
     implementation http_implements
