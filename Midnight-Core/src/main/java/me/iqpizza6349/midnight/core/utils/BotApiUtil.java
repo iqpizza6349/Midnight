@@ -11,11 +11,11 @@ public final class BotApiUtil {
     private static final String BASE_URL = "http://localhost:8090/bot";
 
     @Getter
+    @Setter
     @ToString
-    @RequiredArgsConstructor
     public static class BotResponse {
-        private final String name;
-        private final String description;
+        private String name;
+        private String description;
     }
 
     @Getter

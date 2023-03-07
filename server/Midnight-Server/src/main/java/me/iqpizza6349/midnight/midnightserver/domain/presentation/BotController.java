@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/bot")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BotController {
 
     private final BotService botService;

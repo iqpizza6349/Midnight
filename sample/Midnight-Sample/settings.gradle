@@ -1,0 +1,8 @@
+rootProject.name = 'Midnight-Sample'
+
+dependencyResolutionManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}

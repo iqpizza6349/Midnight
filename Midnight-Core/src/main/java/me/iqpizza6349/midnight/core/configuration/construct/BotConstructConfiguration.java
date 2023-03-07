@@ -4,7 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.iqpizza6349.midnight.core.configuration.BotConfig;
+import me.iqpizza6349.midnight.core.configuration.BotProperties;
 import me.iqpizza6349.midnight.core.utils.BotApiUtil;
 import me.iqpizza6349.midnight.event.GeneralEvent;
 import me.iqpizza6349.midnight.event.close.CloseEvent;
@@ -18,22 +18,34 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class BotConstructConfiguration {
 
-    private final BotConfig botConfig;
+    private final BotProperties botProperties;
+
     private final ApplicationContext applicationContext;
     private final BotConstructedEventListener constructedEventListener;
 
     @PostConstruct
     private void botInit() {
-        log.info("{}", botConfig.getToken());
-        BotApiUtil.ResponseObject response = BotApiUtil.requestFindBot(botConfig.getToken());
-        log.info("{}", response.getCode());
-        log.info("{}", response.getResponse());
-        if (response.getCode() != 200) {
+        System.out.println(applicationContext.getBeansOfType(BotProperties.class));
+        final String token = botProperties.getToken();
+        log.info("{}", token);
+        BotApiUtil.ResponseObject response = BotApiUtil.requestFindBot(token);
+        final int code = response.getCode();
+        final BotApiUtil.BotResponse botResponse = response.getResponse();
+        System.out.println(botResponse);
+
+        if (code / 100 != 2) {
+            log.error("status-code: {}", code);
             botShutdown(new CloseEvent("token is invalid", response.getCode()));
             return;
         }
 
-        constructedEventListener.onSetup(new GeneralEvent(200) {
+        if (!(botResponse.getName().equals(botProperties.getName()))) {
+            botShutdown(new CloseEvent("bot name is in-correct", 400));
+            return;
+        }
+
+        log.info("status-code: {}", code);
+        constructedEventListener.onSetup(new GeneralEvent(response.getCode()) {
             @Override
             public int getResponseCode() {
                 return super.getResponseCode();

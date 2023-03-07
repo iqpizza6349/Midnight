@@ -1,0 +1,7 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+bot:
+  name: superbot
+  token: qYX241Su2el0rBtKKBGfy2wmbe

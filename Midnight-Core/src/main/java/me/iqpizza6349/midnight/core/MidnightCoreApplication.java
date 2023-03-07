@@ -1,12 +1,12 @@
-package me.iqpizza6349.midnight;
+package me.iqpizza6349.midnight.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MidnightApplication {
+public class MidnightCoreApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MidnightApplication.class, args);
+        SpringApplication.run(MidnightCoreApplication.class, args);
     }
 }

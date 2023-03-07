@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
     id 'org.springframework.boot' version '3.0.3'
     id 'io.spring.dependency-management' version '1.1.0'
 }
@@ -9,23 +10,37 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    implementation project(':Midnight-Api')
-    implementation project(':Midnight-Core')
-    implementation project(':Midnight-Common')
+    implementation 'me.iqpizza6349:midnight-api:1.0-SNAPSHOT'
+    implementation 'me.iqpizza6349:midnight-common:1.0-SNAPSHOT'
+    implementation 'me.iqpizza6349:midnight-core:1.0-SNAPSHOT'
 
     implementation http_implements
-    annotationProcessor config_annotation
+    implementation config_annotation
 
     implementation core_implements
     testImplementation core_test
-
+    testImplementation http_test
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "${groupId}"
+            artifactId = 'midnight-http'
+            version = "${version}"
+
+//            artifact "midnight-http-${version}"
+            from components.java
+        }
+    }
 }

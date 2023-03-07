@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
     id 'org.springframework.boot' version '3.0.1'
     id 'io.spring.dependency-management' version '1.1.0'
 }
@@ -9,11 +10,18 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    mavenLocal()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:3.0.1")
+    }
 }
 
 dependencies {
-    implementation project(":Midnight-Common")
-    implementation project(":Midnight-Api")
+    implementation 'me.iqpizza6349:midnight-api:1.0-SNAPSHOT'
+    implementation 'me.iqpizza6349:midnight-common:1.0-SNAPSHOT'
     implementation core_implements
     implementation webclient_implements
     testImplementation core_test
@@ -24,4 +32,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "${groupId}"
+            artifactId = 'midnight-core'
+            version = "${version}"
+
+            from components.java
+        }
+    }
 }

@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  me.iqpizza6349.midnight.presentation.ChatController,\
+  me.iqpizza6349.midnight.constraints.kafka.KafkaConstraints,\
+  me.iqpizza6349.midnight.core.configuration.*,\
+  me.iqpizza6349.midnight.core.handler.*,\
+  me.iqpizza6349.midnight.core.listener.MessageListener,\
+  me.iqpizza6349.midnight.core.utils.KafkaMessageSender
