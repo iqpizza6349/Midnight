@@ -2,5 +2,3 @@ rootProject.name = 'midnight'
 include 'Midnight-Core'
 include 'Midnight-Http'
 include 'Midnight-Api'
-include 'Midnight-Common'
-

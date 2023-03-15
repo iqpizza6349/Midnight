@@ -12,12 +12,6 @@
       "type": "java.lang.String",
       "sourceType": "me.iqpizza6349.midnight.core.configuration.BotProperties",
       "description": "봇의 이름"
-    },
-    {
-      "name": "bot.token",
-      "type": "java.lang.String",
-      "sourceType": "me.iqpizza6349.midnight.core.configuration.BotProperties",
-      "description": "봇의 토큰"
     }
   ]
 }

@@ -1,12 +1,8 @@
 plugins {
     id 'java'
+    id 'java-library'
     id 'maven-publish'
-    id 'org.springframework.boot' version '3.0.3'
-    id 'io.spring.dependency-management' version '1.1.0'
 }
-
-group 'me.iqpizza6349'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -14,18 +10,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'me.iqpizza6349:midnight-api:1.0-SNAPSHOT'
-    implementation 'me.iqpizza6349:midnight-common:1.0-SNAPSHOT'
-    implementation 'me.iqpizza6349:midnight-core:1.0-SNAPSHOT'
+    api 'me.iqpizza6349:midnight-lib:1.0.0-SNAPSHOT'
+    api 'me.iqpizza6349:midnight-core-spring-boot-starter:1.0.0-SNAPSHOT'
 
-    implementation http_implements
-    implementation config_annotation
+    implementation 'org.springframework:spring-messaging:6.0.2'
 
-    implementation core_implements
-    testImplementation core_test
-    testImplementation http_test
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //noinspection VulnerableLibrariesLocal
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.0'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.0'
 }
 
 test {
@@ -35,11 +30,9 @@ test {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = "${groupId}"
-            artifactId = 'midnight-http'
-            version = "${version}"
-
-//            artifact "midnight-http-${version}"
+            groupId = 'me.iqpizza6349'
+            artifactId = 'midnight-spring-boot-starter'
+            version = '1.0.0-SNAPSHOT'
             from components.java
         }
     }

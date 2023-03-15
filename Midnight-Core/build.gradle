@@ -1,33 +1,23 @@
-plugins {
-    id 'java'
-    id 'maven-publish'
-    id 'org.springframework.boot' version '3.0.1'
-    id 'io.spring.dependency-management' version '1.1.0'
-}
+import org.gradle.api.publish.maven.MavenPublication
 
-group 'me.iqpizza6349'
-version '1.0-SNAPSHOT'
+plugins {
+    id 'maven-publish'
+}
 
 repositories {
     mavenCentral()
-    mavenLocal()
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.boot:spring-boot-dependencies:3.0.1")
-    }
 }
 
 dependencies {
-    implementation 'me.iqpizza6349:midnight-api:1.0-SNAPSHOT'
-    implementation 'me.iqpizza6349:midnight-common:1.0-SNAPSHOT'
-    implementation core_implements
-    implementation webclient_implements
-    testImplementation core_test
-    annotationProcessor config_annotation
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation project(':Midnight-Api')
+
+    //noinspection VulnerableLibrariesLocal
+    implementation 'org.springframework.boot:spring-boot-starter-websocket:3.0.0'
+    implementation 'org.springframework.kafka:spring-kafka:3.0.0'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.0.0'
+
+    //noinspection VulnerableLibrariesLocal
+    testImplementation 'org.springframework.kafka:spring-kafka-test:3.0.0'
 }
 
 test {
@@ -37,10 +27,9 @@ test {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = "${groupId}"
-            artifactId = 'midnight-core'
-            version = "${version}"
-
+            groupId = 'me.iqpizza6349'
+            artifactId = 'midnight-core-spring-boot-starter'
+            version = '1.0.0-SNAPSHOT'
             from components.java
         }
     }
