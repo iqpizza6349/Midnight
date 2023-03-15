@@ -4,6 +4,7 @@ import me.iqpizza6349.midnight.constraints.kafka.KafkaConstraints;
 import me.iqpizza6349.midnight.model.message.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -20,14 +21,14 @@ import java.util.Map;
 public class ListenerConfig {
 
     @Bean
-    ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Message> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
-    @Bean
+    @Bean @ConditionalOnMissingBean
     public ConsumerFactory<String, Message> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfigurations(), new StringDeserializer(), new JsonDeserializer<>(Message.class));
     }

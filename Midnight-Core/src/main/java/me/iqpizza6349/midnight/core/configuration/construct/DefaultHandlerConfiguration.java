@@ -10,6 +10,7 @@ import me.iqpizza6349.midnight.listener.init.BotConstructedEventListener;
 import me.iqpizza6349.midnight.listener.join.JoinEventListener;
 import me.iqpizza6349.midnight.listener.message.MessageEventListener;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,17 +22,17 @@ public class DefaultHandlerConfiguration {
     private final KafkaMessageSender messageSender;
     private final BotProperties botProperties;
 
-    @Bean
+    @Bean @ConditionalOnMissingBean
     public BotConstructedEventListener botConstructedEventListener() {
         return new DefaultConstructHandler(botProperties);
     }
 
-    @Bean
+    @Bean @ConditionalOnMissingBean
     public JoinEventListener joinEventListener() {
         return new DefaultMemberJoinHandler(messageSender, botProperties);
     }
 
-    @Bean
+    @Bean @ConditionalOnMissingBean
     public MessageEventListener messageEventListener() {
         return new DefaultMessageHandler();
     }
