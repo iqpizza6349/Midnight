@@ -3,4 +3,8 @@ spring:
     allow-bean-definition-overriding: true
 
 bot:
-  name: superbot
+  name: superb
+  topic: kafka-chat-2
+  group-id: kafka-sandbox
+  destination: /topic/group
+  kafka-broker: localhost:9092
