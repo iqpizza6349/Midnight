@@ -6,9 +6,14 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * configuration class that Default Bot Ready Listener register with beans
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @Configuration
 @RequiredArgsConstructor
-@EnableConfigurationProperties(BotProperties.class)
+@EnableConfigurationProperties(MidnightProperties.class)
 public class DefaultListenerConfiguration {
 
     @Bean

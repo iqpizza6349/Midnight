@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @RequiredArgsConstructor
-@ConfigurationProperties("bot")
-public class BotProperties {
+@ConfigurationProperties("midnight")
+public class MidnightProperties {
 
     private String name;
     private String topic;

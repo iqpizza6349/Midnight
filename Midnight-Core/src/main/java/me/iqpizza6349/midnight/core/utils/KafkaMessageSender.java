@@ -16,7 +16,6 @@ public class KafkaMessageSender implements MessageSender<Message> {
 
     private final KafkaTemplate<String, Message> kafkaTemplate;
 
-
     @Override
     public void sendMessage(Message message, String topic) {
         try {

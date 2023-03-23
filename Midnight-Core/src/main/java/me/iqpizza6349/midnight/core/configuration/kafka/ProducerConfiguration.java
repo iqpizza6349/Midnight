@@ -1,7 +1,7 @@
 package me.iqpizza6349.midnight.core.configuration.kafka;
 
 import lombok.RequiredArgsConstructor;
-import me.iqpizza6349.midnight.core.configuration.BotProperties;
+import me.iqpizza6349.midnight.core.configuration.MidnightProperties;
 import me.iqpizza6349.midnight.model.message.Message;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -16,12 +16,19 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Configuration class that set kafka configuration with beans such as 'product'
+ * also register kafka-template
+ * @see KafkaTemplate
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @EnableKafka
 @Configuration
 @RequiredArgsConstructor
 public class ProducerConfiguration {
 
-    private final BotProperties properties;
+    private final MidnightProperties properties;
 
     @Bean
     public ProducerFactory<String, Message> producerFactory() {

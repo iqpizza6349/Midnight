@@ -3,7 +3,7 @@ package me.iqpizza6349.midnight.presentation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.iqpizza6349.midnight.core.configuration.BotProperties;
+import me.iqpizza6349.midnight.core.configuration.MidnightProperties;
 import me.iqpizza6349.midnight.core.configuration.MidnightConfiguration;
 import me.iqpizza6349.midnight.event.handler.EventHandler;
 import me.iqpizza6349.midnight.event.GeneralEvent;
@@ -28,7 +28,7 @@ import java.util.Objects;
 public class ChatController {
 
     private final MessageSender<Message> sender;
-    private final BotProperties properties;
+    private final MidnightProperties properties;
     private final MidnightConfiguration configuration;
 
     @PostMapping(value = "/api/send", consumes = "application/json", produces = "application/json")

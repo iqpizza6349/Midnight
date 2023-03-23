@@ -1,7 +1,7 @@
 package me.iqpizza6349.midnight.core.configuration.kafka;
 
 import lombok.RequiredArgsConstructor;
-import me.iqpizza6349.midnight.core.configuration.BotProperties;
+import me.iqpizza6349.midnight.core.configuration.MidnightProperties;
 import me.iqpizza6349.midnight.model.message.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,12 +17,18 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Configuration class that set kafka configuration with beans
+ * such as 'consumer', 'listener-container'
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @EnableKafka
 @Configuration
 @RequiredArgsConstructor
-public class ListenerConfig {
+public class KafkaListenerConfiguration {
 
-    private final BotProperties properties;
+    private final MidnightProperties properties;
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory() {

@@ -1,6 +1,6 @@
 me.iqpizza6349.midnight.core.configuration.DefaultListenerConfiguration
 me.iqpizza6349.midnight.core.configuration.MidnightConfiguration
-me.iqpizza6349.midnight.core.configuration.kafka.ListenerConfig
+me.iqpizza6349.midnight.core.configuration.kafka.KafkaListenerConfiguration
 me.iqpizza6349.midnight.core.configuration.kafka.ProducerConfiguration
 me.iqpizza6349.midnight.core.configuration.socket.WebSocketConfiguration
 me.iqpizza6349.midnight.core.event.lifecycle.MidnightConstructEventPublisher
