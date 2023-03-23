@@ -5,6 +5,13 @@ import me.iqpizza6349.midnight.event.chat.channel.ChannelEvent;
 import me.iqpizza6349.midnight.event.chat.member.MemberEvent;
 import me.iqpizza6349.midnight.model.MidnightAuditing;
 
+/**
+ * A abstract event class that when member(client) entrance to channel <br>
+ * Well-known implement class: <br>
+ * {@link MemberMessageChannelJoinEvent}
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @RequiredArgsConstructor
 public abstract class MemberChannelJoinEvent implements ChannelEvent, MemberEvent {
 

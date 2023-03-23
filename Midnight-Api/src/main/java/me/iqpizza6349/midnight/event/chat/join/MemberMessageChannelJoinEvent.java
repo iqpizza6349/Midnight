@@ -5,6 +5,13 @@ import me.iqpizza6349.midnight.model.channel.Channel;
 import me.iqpizza6349.midnight.model.channel.MessageChannel;
 import me.iqpizza6349.midnight.model.member.Member;
 
+/**
+ * Class that is fired when a user enters a chat channel <br>
+ *
+ * Please see the {@link MemberChannelJoinEvent} class
+ * @author iqpizza6349
+ * @since 1.0
+ */
 public class MemberMessageChannelJoinEvent extends MemberChannelJoinEvent {
 
     private final MessageChannel channel;

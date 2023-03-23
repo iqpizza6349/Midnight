@@ -4,6 +4,11 @@ import lombok.RequiredArgsConstructor;
 import me.iqpizza6349.midnight.model.message.Message;
 import me.iqpizza6349.midnight.util.MessageSender;
 
+/**
+ * Message Channel that implement class for {@link Channel}
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @RequiredArgsConstructor
 public class MessageChannel implements Channel {
 

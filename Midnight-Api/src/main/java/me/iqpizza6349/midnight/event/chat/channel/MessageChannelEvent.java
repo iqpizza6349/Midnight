@@ -1,32 +1,20 @@
 package me.iqpizza6349.midnight.event.chat.channel;
 
-import lombok.RequiredArgsConstructor;
-import me.iqpizza6349.midnight.model.MidnightAuditing;
-import me.iqpizza6349.midnight.model.channel.Channel;
-import me.iqpizza6349.midnight.model.channel.MessageChannel;
 import me.iqpizza6349.midnight.model.message.Message;
 
-@RequiredArgsConstructor
-public abstract class MessageChannelEvent implements ChannelEvent {
+/**
+ * An event interface that expresses that occur on the message-channel <br>
+ * this interface must be have {@link Message} class <br>
+ * Well-Known implements: <br>
+ * {@link me.iqpizza6349.midnight.event.chat.message.MessageEvent}
+ * @author iqpizza6349
+ * @since 1.0
+ */
+public interface MessageChannelEvent extends ChannelEvent {
 
-    private final int code;
-    protected final MidnightAuditing auditing;
-    protected final MessageChannel channel;
-
-    @Override
-    public final int getResponseCode() {
-        return code;
-    }
-
-    @Override
-    public final MidnightAuditing getAuditing() {
-        return auditing;
-    }
-
-    @Override
-    public Channel getChannel() {
-        return channel;
-    }
-
-    public abstract Message getMessage();
+    /**
+     * {@link Message} that occurred in message-channel
+     * @return occurred message in message-channel
+     */
+    Message getMessage();
 }
