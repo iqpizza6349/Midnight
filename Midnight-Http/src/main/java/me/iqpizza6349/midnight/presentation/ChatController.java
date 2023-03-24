@@ -21,6 +21,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+/**
+ * Default chat controller class that send and receive messages <br>
+ * also get several events from clients <br>
+ * In Midnight Framework, {@link RestController} is use for event publisher
+ * that confirm from client
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @Slf4j
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -52,14 +60,14 @@ public class ChatController {
 
     // ---- WebSocket API ----
     @MessageMapping("/sendMessage")
-    @SendTo("#{'${bot.group-id}'}")
+    @SendTo("#{'${midnight.group-id}'}")
     public Message broadCastGroupMessage(@Payload Message message) {
         // sending this message to all the subscribers
         return message;
     }
 
     @MessageMapping("/newUser")
-    @SendTo("#{'${bot.group-id}'}")
+    @SendTo("#{'${midnight.group-id}'}")
     public Message addUser(@Payload Message message,
                            SimpMessageHeaderAccessor headerAccessor) {
         // add user in web socket session

@@ -33,7 +33,6 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
         registry.setApplicationDestinationPrefixes("/app");
         final int lastIndex = properties.getDestination().lastIndexOf("/");
         final String prefix = properties.getDestination().substring(0, lastIndex);
-        System.out.println(prefix);
-        registry.enableSimpleBroker("/topic/");
+        registry.enableSimpleBroker(prefix + "/");
     }
 }

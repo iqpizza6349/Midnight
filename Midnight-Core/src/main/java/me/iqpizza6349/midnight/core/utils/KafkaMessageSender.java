@@ -5,12 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import me.iqpizza6349.midnight.model.message.Message;
 import me.iqpizza6349.midnight.util.MessageSender;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Default Message Sender to send Message with KafkaBroker
+ * @author iqpizza6349
+ * @since 1.0
+ */
 @Slf4j
-@Component
 @RequiredArgsConstructor
 public class KafkaMessageSender implements MessageSender<Message> {
 

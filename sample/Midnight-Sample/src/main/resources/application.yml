@@ -2,7 +2,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-bot:
+midnight:
   name: superb
   topic: kafka-chat-2
   group-id: kafka-sandbox
