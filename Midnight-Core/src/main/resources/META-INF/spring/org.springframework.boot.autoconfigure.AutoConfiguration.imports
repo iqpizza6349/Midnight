@@ -4,4 +4,3 @@ me.iqpizza6349.midnight.core.configuration.kafka.ProducerConfiguration
 me.iqpizza6349.midnight.core.configuration.socket.WebSocketConfiguration
 me.iqpizza6349.midnight.core.event.lifecycle.MidnightConstructEventPublisher
 me.iqpizza6349.midnight.core.kafka.MessageListener
-me.iqpizza6349.midnight.core.utils.KafkaMessageSender

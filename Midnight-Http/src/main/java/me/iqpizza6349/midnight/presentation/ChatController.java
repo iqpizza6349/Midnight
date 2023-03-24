@@ -9,6 +9,7 @@ import me.iqpizza6349.midnight.event.handler.EventHandler;
 import me.iqpizza6349.midnight.event.GeneralEvent;
 import me.iqpizza6349.midnight.event.chat.join.MemberMessageChannelJoinEvent;
 import me.iqpizza6349.midnight.event.chat.message.MessageEvent;
+import me.iqpizza6349.midnight.model.MidnightAuditing;
 import me.iqpizza6349.midnight.model.channel.MessageChannel;
 import me.iqpizza6349.midnight.model.member.Member;
 import me.iqpizza6349.midnight.model.message.Message;
@@ -38,12 +39,13 @@ public class ChatController {
     private final MessageSender<Message> sender;
     private final MidnightProperties properties;
     private final MidnightConfiguration configuration;
+    private final MidnightAuditing auditing;
 
     @PostMapping(value = "/api/send", consumes = "application/json", produces = "application/json")
     public void sendMessage(@RequestBody @Valid Message message) {
         sender.sendMessage(message, properties.getTopic());
         MessageChannel channel = new MessageChannel(message.getSender(),
-                properties.getTopic(), sender);
+                properties.getTopic(), sender, auditing);
         GeneralEvent event = new MessageEvent(200, configuration.auditing(), channel,
                 message, new Member(message.getSender()));
         EventHandler.callEvent(ChatController.class, event);
@@ -52,7 +54,7 @@ public class ChatController {
     @PostMapping(value = "/api/join", consumes = "application/json", produces = "application/json")
     public void joinUser(@RequestBody @Valid Message message) {
         MessageChannel channel = new MessageChannel(message.getSender(),
-                properties.getTopic(), sender);
+                properties.getTopic(), sender, auditing);
         GeneralEvent event = new MemberMessageChannelJoinEvent(200, configuration.auditing(), channel,
                 new Member(message.getSender()));
         EventHandler.callEvent(ChatController.class, event);

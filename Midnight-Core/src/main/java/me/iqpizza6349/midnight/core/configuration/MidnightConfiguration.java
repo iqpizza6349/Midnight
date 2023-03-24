@@ -1,7 +1,7 @@
 package me.iqpizza6349.midnight.core.configuration;
 
 import lombok.RequiredArgsConstructor;
-import me.iqpizza6349.midnight.core.utils.KafkaMessageSender;
+import me.iqpizza6349.midnight.core.utils.sender.KafkaMessageSender;
 import me.iqpizza6349.midnight.model.MidnightAuditing;
 import me.iqpizza6349.midnight.model.message.Message;
 import me.iqpizza6349.midnight.util.MessageSender;

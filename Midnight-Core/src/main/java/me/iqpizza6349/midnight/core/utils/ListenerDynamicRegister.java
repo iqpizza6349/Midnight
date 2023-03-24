@@ -1,4 +1,4 @@
-package me.iqpizza6349.midnight.core.event.lifecycle;
+package me.iqpizza6349.midnight.core.utils;
 
 import me.iqpizza6349.midnight.event.listener.EventListener;
 import org.reflections.Reflections;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.support.GenericApplicationContext;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.Set;
 
 /**
@@ -36,12 +37,14 @@ public final class ListenerDynamicRegister {
         Set<Class<? extends EventListener>> eventListeners = new Reflections("")
                 .getSubTypesOf(EventListener.class);
         for (Class<? extends EventListener> listener : eventListeners) {
-            if (listener.isInterface()) {
+            System.out.println(listener.getSimpleName());
+            if (listener.isInterface() || Modifier.isAbstract(listener.getModifiers())) {
                 continue;
             }
 
             try {
-                factory.registerSingleton(listener.getSimpleName(), listener.getDeclaredConstructor().newInstance());
+                factory.registerSingleton(listener.getSimpleName(), listener.getDeclaredConstructor()
+                        .newInstance());
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
                      IllegalAccessException e) {
                 throw new RuntimeException(e);

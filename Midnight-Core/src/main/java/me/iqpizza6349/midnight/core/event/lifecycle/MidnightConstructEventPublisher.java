@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.iqpizza6349.midnight.core.configuration.MidnightConfiguration;
+import me.iqpizza6349.midnight.core.utils.ListenerDynamicRegister;
 import me.iqpizza6349.midnight.event.GeneralEvent;
 import me.iqpizza6349.midnight.event.midnight.MidnightReadyEvent;
 import me.iqpizza6349.midnight.event.handler.EventHandler;

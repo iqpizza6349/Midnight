@@ -27,4 +27,10 @@ public interface Channel {
      */
     void sendMessage(Message message);
 
+    /**
+     * returns who send message
+     * @return sender
+     */
+    String getSender();
+
 }

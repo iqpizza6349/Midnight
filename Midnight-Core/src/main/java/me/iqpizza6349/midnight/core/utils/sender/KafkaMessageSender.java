@@ -1,4 +1,4 @@
-package me.iqpizza6349.midnight.core.utils;
+package me.iqpizza6349.midnight.core.utils.sender;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
