@@ -1,17 +1,42 @@
 {
   "groups": [
     {
-      "name": "bot",
-      "type": "me.iqpizza6349.midnight.core.configuration.BotProperties",
-      "sourceType": "me.iqpizza6349.midnight.core.configuration.BotProperties"
+      "name": "midnight",
+      "type": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties"
     }
   ],
   "properties": [
     {
-      "name": "bot.name",
+      "name": "midnight.name",
       "type": "java.lang.String",
-      "sourceType": "me.iqpizza6349.midnight.core.configuration.BotProperties",
-      "description": "봇의 이름"
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "description": "봇의 이름."
+    },
+    {
+      "name": "midnight.topic",
+      "type": "java.lang.String",
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "description": "카프카 채팅 토픽."
+    },
+    {
+      "name": "midnight.group-id",
+      "type": "java.lang.String",
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "description": "카프카 채팅 그룹 아이디."
+    },
+    {
+      "name": "midnight.kafka-broker",
+      "type": "java.lang.String",
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "description": "카프카 host.",
+      "defaultValue": "localhost:9092"
+    },
+    {
+      "name": "midnight.destination",
+      "type": "java.lang.String",
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "description": "클라이언트 채팅 토픽."
     }
   ]
 }

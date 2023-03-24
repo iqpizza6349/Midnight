@@ -7,6 +7,12 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+/**
+ * Message model class that send or receive with this class
+ * must have sender(who send from), content, timestamp
+ * @author iqpizza6349
+ * @version 1.0
+ */
 @ToString
 @Getter @Setter
 @NoArgsConstructor

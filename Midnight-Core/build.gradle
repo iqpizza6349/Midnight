@@ -11,6 +11,7 @@ repositories {
 dependencies {
     implementation project(':Midnight-Api')
 
+    implementation 'org.reflections:reflections:0.9.12'
     //noinspection VulnerableLibrariesLocal
     implementation 'org.springframework.boot:spring-boot-starter-websocket:3.0.0'
     implementation 'org.springframework.kafka:spring-kafka:3.0.0'

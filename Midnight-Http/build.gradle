@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    api 'me.iqpizza6349:midnight-lib:1.0.0-SNAPSHOT'
-    api 'me.iqpizza6349:midnight-core-spring-boot-starter:1.0.0-SNAPSHOT'
+    api project(':Midnight-Api')
+    api project(':Midnight-Core')
 
     implementation 'org.springframework:spring-messaging:6.0.2'
 

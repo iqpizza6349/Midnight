@@ -1,20 +1,26 @@
 package me.iqpizza6349.midnight.event;
 
-import lombok.RequiredArgsConstructor;
+import me.iqpizza6349.midnight.model.MidnightAuditing;
 
 /**
- * 최상위 이벤트 추상 클래스
+ * Top-level event interface that represents the events that might occur
+ * in the Midnight framework <br>
+ * @author iqpizza6349
+ * @since 1.0
  */
-@RequiredArgsConstructor
-public abstract class GeneralEvent {
-
-    protected final int responseCode;
+public interface GeneralEvent {
 
     /**
      * HTTP 코드를 반환합니다. 기본 코드는 200 반환하도록 합니다.
-     * @return HTTP 코드를 반환
+     * returns HTTP code. default code is 200
+     * @return HTTP code
      */
-    public int getResponseCode() {
-        return responseCode;
-    }
+    int getResponseCode();
+
+    /**
+     * returns basic information about <strong>auto answer bot</strong>
+     * @return basic information about bot
+     */
+    MidnightAuditing getAuditing();
+
 }
