@@ -22,7 +22,7 @@ public class KafkaMessageSender implements MessageSender<Message> {
     @Override
     public void sendMessage(Message message, String topic) {
         try {
-            kafkaTemplate.send(topic, message).get();
+            kafkaTemplate.send(topic, message.getDestination(), message).get();
         } catch (InterruptedException | ExecutionException e) {
             log.warn("{}", e.getMessage());
             throw new RuntimeException(e);
