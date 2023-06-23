@@ -47,6 +47,7 @@ const App = () => {
     })
   }
 
+  // noinspection JSVoidFunctionReturnValueUsed
   return (
       <div className="App">
         {!!user ?
