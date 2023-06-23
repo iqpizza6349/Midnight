@@ -13,8 +13,6 @@ public class MemberJoinEventListener extends AbstractEventListener {
     public void onEvent(GeneralEvent generalEvent) {
         if (generalEvent instanceof MemberChannelJoinEvent event) {
             Channel channel = event.getChannel();
-            log.info("{} has join to channel {}", event.getMember().getUsername(),
-                    channel.getTopic());
             channel.sendMessage("Hello, " + event.getMember().getUsername());
         }
     }
