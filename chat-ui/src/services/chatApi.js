@@ -10,18 +10,20 @@ const chatAPI = {
         return api.get(`messages/${groupId}`);
     },
 
-    sendMessage: (username, text) => {
+    sendMessage: (username, text, channel) => {
         let msg = {
             sender: username,
-            content: text
+            content: text,
+            destination: channel
         }
         return api.post(`send`, msg);
     },
 
-    joinUser: (username) => {
+    joinUser: (username, channel) => {
         let user = {
             sender: username,
-            content: ''
+            content: '',
+            destination: channel
         }
         return api.post(`join`, user);
     }
