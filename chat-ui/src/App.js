@@ -12,6 +12,7 @@ const SOCKET_URL = 'http://localhost:8080/ws-chat/';
 
 const App = () => {
   const [messages, setMessages] = useState([])
+  const [channel, setChannel] = useState("");
   const [user, setUser] = useState(null)
 
   let onConnected = () => {
@@ -24,22 +25,23 @@ const App = () => {
   }
 
   let onSendMessage = (msgText) => {
-    chatAPI.sendMessage(user.username, msgText).then(res => {
+    chatAPI.sendMessage(user.username, msgText, channel).then(res => {
       console.log('Sent', res);
     }).catch(err => {
       console.log('Error Occurred while sending message to api', err);
     })
   }
 
-  let handleLoginSubmit = (username) => {
+  let handleLoginSubmit = (username, channel) => {
     console.log(username, " Logged in..");
 
     setUser({
       username: username,
       color: randomColor()
     });
-    chatAPI.joinUser(username).then(res => {
+    chatAPI.joinUser(username, channel).then(res => {
       console.log('join', res);
+      setChannel(channel);
     }).catch(err => {
       console.log('Error Occurred while joining channel to api', err);
     })
@@ -52,7 +54,7 @@ const App = () => {
                 <>
                   <SockJsClient
                       url={SOCKET_URL}
-                      topics={['/topic/group']}
+                      topics={[channel]}
                       onConnect={onConnected}
                       onDisconnect={console.log("Disconnected!")}
                       onMessage={msg => onMessageReceived(msg)}
