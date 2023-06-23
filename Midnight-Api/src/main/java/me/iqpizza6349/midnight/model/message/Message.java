@@ -17,16 +17,15 @@ import java.time.LocalDateTime;
 @Getter @Setter
 @NoArgsConstructor
 public class Message {
-
     private String sender;
-
     private String content;
-
     private String timestamp;
+    private String destination;
 
-    public Message(String sender, String content) {
+    public Message(String sender, String content, String destination) {
         this.sender = sender;
         this.content = content;
+        this.destination = destination;
         this.timestamp = LocalDateTime.now().toString();
     }
 }

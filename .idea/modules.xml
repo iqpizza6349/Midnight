@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Sample.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Sample.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Api/midnight.Midnight-Api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Api/midnight.Midnight-Api.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Core/midnight.Midnight-Core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Core/midnight.Midnight-Core.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Http/midnight.Midnight-Http.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Http/midnight.Midnight-Http.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Api/Midnight.Midnight-Api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Api/Midnight.Midnight-Api.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Core/Midnight.Midnight-Core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Core/Midnight.Midnight-Core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Midnight-Http/Midnight.Midnight-Http.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Midnight-Http/Midnight.Midnight-Http.main.iml" />
     </modules>
   </component>
 </project>

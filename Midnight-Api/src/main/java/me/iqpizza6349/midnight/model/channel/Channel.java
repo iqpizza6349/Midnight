@@ -10,6 +10,12 @@ import me.iqpizza6349.midnight.model.message.Message;
 public interface Channel {
 
     /**
+     * channel's destination to send and receive
+     * @return channel's specific destination
+     */
+    String getDestination();
+
+    /**
      * channel's topic that connect to
      * @return channel's topic
      */

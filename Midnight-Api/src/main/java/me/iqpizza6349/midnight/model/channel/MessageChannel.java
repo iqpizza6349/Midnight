@@ -15,8 +15,14 @@ public class MessageChannel implements Channel {
 
     private final String sender;
     private final String topic;
+    private final String destination;
     private final MessageSender<Message> messageSender;
     private final MidnightAuditing auditing;
+
+    @Override
+    public String getDestination() {
+        return destination;
+    }
 
     @Override
     public String getTopic() {
@@ -25,7 +31,7 @@ public class MessageChannel implements Channel {
 
     @Override
     public void sendMessage(String text) {
-        sendMessage(new Message(auditing.getBotName(), text));
+        sendMessage(new Message(auditing.getBotName(), text, destination));
     }
 
     @Override
