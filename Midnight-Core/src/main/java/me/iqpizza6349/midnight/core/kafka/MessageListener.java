@@ -2,7 +2,6 @@ package me.iqpizza6349.midnight.core.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.iqpizza6349.midnight.core.configuration.MidnightProperties;
 import me.iqpizza6349.midnight.core.utils.sender.KafkaMessageSender;
 import me.iqpizza6349.midnight.model.message.Message;
 import org.springframework.kafka.annotation.KafkaListener;
