@@ -23,10 +23,9 @@ public class MessageListener {
     private final MidnightProperties properties;
 
     @KafkaListener(
-            topics = "#{'${midnight.topic}'}",
-            groupId = "#{'${midnight.group-id}'}"
+            topics = "#{'${midnight.topic}'}"
     )
     public void listen(Message message) {
-        messagingTemplate.convertAndSend(properties.getDestination(), message);
+        messagingTemplate.convertAndSend(message.getDestination(), message);
     }
 }
