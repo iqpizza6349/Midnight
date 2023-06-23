@@ -45,7 +45,7 @@ public class ChatController {
     public void sendMessage(@RequestBody @Valid Message message) {
         sender.sendMessage(message, properties.getTopic());
         MessageChannel channel = new MessageChannel(message.getSender(),
-                properties.getTopic(), sender, auditing);
+                properties.getTopic(), message.getDestination(), sender, auditing);
         GeneralEvent event = new MessageEvent(200, configuration.auditing(), channel,
                 message, new Member(message.getSender()));
         EventHandler.callEvent(ChatController.class, event);
@@ -54,7 +54,7 @@ public class ChatController {
     @PostMapping(value = "/api/join", consumes = "application/json", produces = "application/json")
     public void joinUser(@RequestBody @Valid Message message) {
         MessageChannel channel = new MessageChannel(message.getSender(),
-                properties.getTopic(), sender, auditing);
+                properties.getTopic(), message.getDestination(), sender, auditing);
         GeneralEvent event = new MemberMessageChannelJoinEvent(200, configuration.auditing(), channel,
                 new Member(message.getSender()));
         EventHandler.callEvent(ChatController.class, event);
@@ -62,19 +62,18 @@ public class ChatController {
 
     // ---- WebSocket API ----
     @MessageMapping("/sendMessage")
-    @SendTo("#{'${midnight.group-id}'}")
-    public Message broadCastGroupMessage(@Payload Message message) {
+    public void broadCastGroupMessage(@Payload Message message) {
         // sending this message to all the subscribers
-        return message;
+        log.info("receive message(`{}`) to {}", message.getContent(), message.getDestination());
+        sender.sendMessage(message, "/topic/" + message.getDestination());
     }
 
     @MessageMapping("/newUser")
-    @SendTo("#{'${midnight.group-id}'}")
-    public Message addUser(@Payload Message message,
-                           SimpMessageHeaderAccessor headerAccessor) {
+    public void addUser(@Payload Message message,
+                        SimpMessageHeaderAccessor headerAccessor) {
         // add user in web socket session
         Objects.requireNonNull(headerAccessor.getSessionAttributes())
                 .put("username", message.getSender());
-        return message;
+        sender.sendMessage(message, "/topic/" + message.getDestination());
     }
 }
