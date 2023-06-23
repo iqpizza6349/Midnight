@@ -20,7 +20,6 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 public class MessageListener {
 
     private final SimpMessagingTemplate messagingTemplate;
-    private final MidnightProperties properties;
 
     @KafkaListener(
             topics = "#{'${midnight.topic}'}"
