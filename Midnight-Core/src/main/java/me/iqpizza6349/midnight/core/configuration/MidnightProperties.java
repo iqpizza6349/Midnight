@@ -14,5 +14,6 @@ public class MidnightProperties {
     private String groupId;
     private String kafkaBroker;
     private String destination;
+    private String offsetReset;
 
 }

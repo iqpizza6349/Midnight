@@ -37,6 +37,13 @@
       "type": "java.lang.String",
       "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
       "description": "클라이언트 채팅 토픽."
+    },
+    {
+      "name": "midnight.offset-reset",
+      "type": "java.lang.String",
+      "sourceType": "me.iqpizza6349.midnight.core.configuration.MidnightProperties",
+      "description": "Kafka partition default offset reset config",
+      "defaultValue": "latest"
     }
   ]
 }
