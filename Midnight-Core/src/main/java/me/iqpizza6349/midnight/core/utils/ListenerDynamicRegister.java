@@ -37,7 +37,6 @@ public final class ListenerDynamicRegister {
         Set<Class<? extends EventListener>> eventListeners = new Reflections("")
                 .getSubTypesOf(EventListener.class);
         for (Class<? extends EventListener> listener : eventListeners) {
-            System.out.println(listener.getSimpleName());
             if (listener.isInterface() || Modifier.isAbstract(listener.getModifiers())) {
                 continue;
             }

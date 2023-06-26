@@ -63,7 +63,9 @@ public class ChatController {
     @MessageMapping("/sendMessage")
     public void broadCastGroupMessage(@Payload Message message) {
         // sending this message to all the subscribers
-        log.info("receive message(`{}`) to {}", message.getContent(), message.getDestination());
+        if (log.isDebugEnabled()) {
+            log.debug("receive message(`{}`) to {}", message.getContent(), message.getDestination());
+        }
         sender.sendMessage(message, "/topic/" + message.getDestination());
     }
 

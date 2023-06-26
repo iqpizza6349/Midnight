@@ -45,7 +45,6 @@ public class KafkaListenerConfiguration {
 
     @Bean
     public Map<String, Object> consumerConfigurations() {
-        System.out.println(properties);
         Map<String, Object> configurations = new HashMap<>();
         configurations.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getKafkaBroker());
         configurations.put(ConsumerConfig.GROUP_ID_CONFIG, properties.getGroupId());
